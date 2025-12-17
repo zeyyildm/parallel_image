@@ -1,0 +1,29 @@
+//Projenin amacı pipeline ı seri openmp mpı ile yazıp performansları karşılaştırmak
+//build: program buradan çalışır, görsel burdan okunur çıktı görsel buraya düşer
+//CMakeList ile tek yerden her şeyi build edebiliriz.
+
+//calistirma icin: -> yaptım(şu an sadece icinde seri var)
+cmake.txt yazılacak
+cmake --build .
+./serial_app
+
+//görseli okuma
+//manuel grayscale nedir -> yaptım
+renkli 8 bit görüntüyü tek kanallı ve 0-1 arası float bir matrise çevirmek
+her pikselde 3 kanal var RGB
+görüntüyü griye çevirme -> bu kısımlar preprocess
+
+//process asamasi
+matris carpim kismi
+
+//postprocess
+normalize edge mask vs
+kolay
+
+//MPI KISMI
+bcast
+scatter
+gather
+
+//zamanl ölçe
+farklı threadlerle deneyip tablo yapısı oluşturacağız
