@@ -3,7 +3,9 @@
         {
             "name": "Mac",
             "includePath": [
-                "/opt/homebrew/opt/opencv/include/opencv4"
+                "/opt/homebrew/opt/opencv/include/opencv4",
+                "/opt/homebrew/opt/open-mpi/include",
+                "/opt/homebrew/opt/libomp/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

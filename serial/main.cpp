@@ -27,15 +27,19 @@ cv::Mat toGrayFloat01(const cv::Mat& bgr){ //& kopyalamıyoruz orijinal görünt
 
 
 //PROCESS (matris çarpımı)
+//kernel = küçük bir matris
+//bu fonksiyon kernelı her piksele uygular.::::
+//ARABANIN SINIRLARI, ÇİZGİLERİ, DETAYLARI ORTAYA ÇIKARIR
 cv::Mat applyConvolution(const cv::Mat& input) { //matris çarpımını sağlar
     cv::Mat output = cv::Mat::zeros(input.size(), input.type()); // Çıktı matrisi oluştur (Girişle aynı boyutta, float tipinde)
 
     float kernel[3][3] = { //kenar bulma matrisi 
-        {-1.0f, -1.0f, -1.0f},
-        {-1.0f,  8.0f, -1.0f},
+        {-1.0f, -1.0f, -1.0f}, //merkez piksel 8 komşular -1
+        {-1.0f,  8.0f, -1.0f}, //yoğun değişim olan yerler = kenar
         {-1.0f, -1.0f, -1.0f}
     };
-
+    //r, c -> hangi pikseldeyiz
+    //kr, kc o pikselin etrafındaki komşuların hangisine bakıyoruz
     //dört tane for döngüsü iç içe olduğu için işlemciyi en çok yoran ve paralleştirmeye en uygun kısımdır
     for (int r = 1; r < input.rows - 1; r++) { //iç içe dört for -> satır, sütun, kernel satır, kernel sütun
         for (int c = 1; c < input.cols - 1; c++) {
@@ -51,15 +55,20 @@ cv::Mat applyConvolution(const cv::Mat& input) { //matris çarpımını sağlar
             }
             //mutlak değer alınır sayı 0 ile 1 arasında sınırlandırılır
             output.at<float>(r, c) = std::min(std::max(std::abs(sum), 0.0f), 1.0f); 
+            //abs -> negatif kenarları pozitife çevirir
+            //max -> negatif olmasın
+            //min -> 1'i geçmesin
             
         }
     }
-    return output;
+    return output; //tek kanallı, float, kenarları vurgulanmış
 }
+//matris çarpımı görüntüden anlamlı bilgiyi süzer
 
 //POSTPROCESS
 //görüntü siyah-beyaz (binary) hale getirilir
 cv::Mat applyThreshold(const cv::Mat& input, float thresholdValue) { 
+    //bu fonksiyon ile o piksel kenar sayılacak kadar güçlü mü bunun kararını veriyoruz
     cv::Mat output = input.clone(); //resmin kopyasını oluşturduk orijinal veriyi bozmamak için
     
     for (int r = 0; r < output.rows; r++) {
@@ -100,7 +109,7 @@ int main(){
     cv::Mat edges = applyConvolution(gray01);
 
     //POSTPROCESS
-    cv::Mat finalResult = applyThreshold(edges, 0.30f);
+    cv::Mat finalResult = applyThreshold(edges, 0.45f);
 
     //zaman ölçümü sonu
     double end_time = (double)cv::getTickCount();

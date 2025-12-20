@@ -57,10 +57,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/beyzahiz/Desktop/parallel_image
+CMAKE_SOURCE_DIR = /Users/zeynepyildirim/Desktop/parallel_image_pipeline
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/beyzahiz/Desktop/parallel_image/build
+CMAKE_BINARY_DIR = /Users/zeynepyildirim/Desktop/parallel_image_pipeline/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/beyzahiz/Desktop/parallel_image/build/CMakeFiles /Users/beyzahiz/Desktop/parallel_image/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zeynepyildirim/Desktop/parallel_image_pipeline/build/CMakeFiles /Users/zeynepyildirim/Desktop/parallel_image_pipeline/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/beyzahiz/Desktop/parallel_image/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/zeynepyildirim/Desktop/parallel_image_pipeline/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,6 +129,117 @@ serial_app/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/serial_app.dir/build.make CMakeFiles/serial_app.dir/build
 .PHONY : serial_app/fast
 
+#=============================================================================
+# Target rules for targets named openmp_m1
+
+# Build rule for target.
+openmp_m1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 openmp_m1
+.PHONY : openmp_m1
+
+# fast build rule for target.
+openmp_m1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m1.dir/build.make CMakeFiles/openmp_m1.dir/build
+.PHONY : openmp_m1/fast
+
+#=============================================================================
+# Target rules for targets named openmp_m2
+
+# Build rule for target.
+openmp_m2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 openmp_m2
+.PHONY : openmp_m2
+
+# fast build rule for target.
+openmp_m2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m2.dir/build.make CMakeFiles/openmp_m2.dir/build
+.PHONY : openmp_m2/fast
+
+#=============================================================================
+# Target rules for targets named openmp_m3
+
+# Build rule for target.
+openmp_m3: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 openmp_m3
+.PHONY : openmp_m3
+
+# fast build rule for target.
+openmp_m3/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m3.dir/build.make CMakeFiles/openmp_m3.dir/build
+.PHONY : openmp_m3/fast
+
+openmp/main1.o: openmp/main1.cpp.o
+.PHONY : openmp/main1.o
+
+# target to build an object file
+openmp/main1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m1.dir/build.make CMakeFiles/openmp_m1.dir/openmp/main1.cpp.o
+.PHONY : openmp/main1.cpp.o
+
+openmp/main1.i: openmp/main1.cpp.i
+.PHONY : openmp/main1.i
+
+# target to preprocess a source file
+openmp/main1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m1.dir/build.make CMakeFiles/openmp_m1.dir/openmp/main1.cpp.i
+.PHONY : openmp/main1.cpp.i
+
+openmp/main1.s: openmp/main1.cpp.s
+.PHONY : openmp/main1.s
+
+# target to generate assembly for a file
+openmp/main1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m1.dir/build.make CMakeFiles/openmp_m1.dir/openmp/main1.cpp.s
+.PHONY : openmp/main1.cpp.s
+
+openmp/main2.o: openmp/main2.cpp.o
+.PHONY : openmp/main2.o
+
+# target to build an object file
+openmp/main2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m2.dir/build.make CMakeFiles/openmp_m2.dir/openmp/main2.cpp.o
+.PHONY : openmp/main2.cpp.o
+
+openmp/main2.i: openmp/main2.cpp.i
+.PHONY : openmp/main2.i
+
+# target to preprocess a source file
+openmp/main2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m2.dir/build.make CMakeFiles/openmp_m2.dir/openmp/main2.cpp.i
+.PHONY : openmp/main2.cpp.i
+
+openmp/main2.s: openmp/main2.cpp.s
+.PHONY : openmp/main2.s
+
+# target to generate assembly for a file
+openmp/main2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m2.dir/build.make CMakeFiles/openmp_m2.dir/openmp/main2.cpp.s
+.PHONY : openmp/main2.cpp.s
+
+openmp/main3.o: openmp/main3.cpp.o
+.PHONY : openmp/main3.o
+
+# target to build an object file
+openmp/main3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m3.dir/build.make CMakeFiles/openmp_m3.dir/openmp/main3.cpp.o
+.PHONY : openmp/main3.cpp.o
+
+openmp/main3.i: openmp/main3.cpp.i
+.PHONY : openmp/main3.i
+
+# target to preprocess a source file
+openmp/main3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m3.dir/build.make CMakeFiles/openmp_m3.dir/openmp/main3.cpp.i
+.PHONY : openmp/main3.cpp.i
+
+openmp/main3.s: openmp/main3.cpp.s
+.PHONY : openmp/main3.s
+
+# target to generate assembly for a file
+openmp/main3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openmp_m3.dir/build.make CMakeFiles/openmp_m3.dir/openmp/main3.cpp.s
+.PHONY : openmp/main3.cpp.s
+
 serial/main.o: serial/main.cpp.o
 .PHONY : serial/main.o
 
@@ -161,7 +272,19 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... openmp_m1"
+	@echo "... openmp_m2"
+	@echo "... openmp_m3"
 	@echo "... serial_app"
+	@echo "... openmp/main1.o"
+	@echo "... openmp/main1.i"
+	@echo "... openmp/main1.s"
+	@echo "... openmp/main2.o"
+	@echo "... openmp/main2.i"
+	@echo "... openmp/main2.s"
+	@echo "... openmp/main3.o"
+	@echo "... openmp/main3.i"
+	@echo "... openmp/main3.s"
 	@echo "... serial/main.o"
 	@echo "... serial/main.i"
 	@echo "... serial/main.s"

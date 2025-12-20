@@ -1,0 +1,13 @@
+# ==== CMake / Build artifacts ====
+build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# ==== macOS ====
+.DS_Store
+
+# ==== VS Code ====
+.vscode/

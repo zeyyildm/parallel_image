@@ -1,14 +1,29 @@
 cmake_minimum_required(VERSION 3.16)
-project(parallel_image_pipeline CXX) #projenin adı ve hangi dili kullandığımızı söylüyoruz
+project(parallel_image_pipeline CXX)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON) #derleyici desteklemiyorsa buildi durdur
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(OpenCV REQUIRED) #sistemde opencv kütüphanesini ara
+# ---- macOS (Homebrew) OpenMP fix ----
+if(APPLE)
+  set(OpenMP_CXX_FLAGS "-Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include")
+  set(OpenMP_CXX_LIB_NAMES "omp")
+  set(OpenMP_omp_LIBRARY "/opt/homebrew/opt/libomp/lib/libomp.dylib")
+endif()
 
-add_executable(serial_app #bir çalıştırılabilir exe dosyası üret
-    serial/main.cpp #ismini ve kaynak dosyasını yazıyoruz
-)
+find_package(OpenCV REQUIRED)
+find_package(OpenMP REQUIRED)
 
+# ---- SERIAL ----
+add_executable(serial_app serial/main.cpp)
 target_link_libraries(serial_app PRIVATE ${OpenCV_LIBS})
-#serial_app programını OPENCV kütüphanelerine bağla
+
+# ---- OPENMP (3 yöntem) ----
+add_executable(openmp_m1 openmp/main1.cpp)
+target_link_libraries(openmp_m1 PRIVATE ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
+
+add_executable(openmp_m2 openmp/main2.cpp)
+target_link_libraries(openmp_m2 PRIVATE ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
+
+add_executable(openmp_m3 openmp/main3.cpp)
+target_link_libraries(openmp_m3 PRIVATE ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
