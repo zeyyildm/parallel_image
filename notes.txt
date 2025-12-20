@@ -5,6 +5,7 @@ cmake --build .
 ./serial_app ./openmp
 
 !!!MAKEFILE PUSHLAMAAA
+!!BUILD PUSHLANMAYACAK
 
 //MPI KISMI
 bcast
